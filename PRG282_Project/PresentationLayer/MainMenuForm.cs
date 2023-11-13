@@ -67,13 +67,11 @@ namespace PRG282_Project
 
         }
 
-        
+
 
         private void StudentNumberBox_Leave(object sender, EventArgs e)
         {
-            int studentNumber = int.Parse(StudentNumberBox.Text);
-            DataTable moduleTable = GetModules(studentNumber);
-            ModuleView.DataSource = moduleTable;
+
         }
     }
 }

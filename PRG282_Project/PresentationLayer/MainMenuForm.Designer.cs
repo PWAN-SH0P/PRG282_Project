@@ -53,7 +53,6 @@
             StudentNumberBox.Name = "StudentNumberBox";
             StudentNumberBox.Size = new Size(125, 27);
             StudentNumberBox.TabIndex = 0;
-            StudentNumberBox.Leave += StudentNumberBox_Leave;
             // 
             // FirstNameBox
             // 
@@ -119,7 +118,7 @@
             AddButton.TabIndex = 8;
             AddButton.Text = "Add Student";
             AddButton.UseVisualStyleBackColor = true;
-            AddButton.Click += AddButton_Click;
+            AddButton.Click += UpdateButton_Click;
             // 
             // DisplayButton
             // 

@@ -14,46 +14,46 @@ namespace PRG282_Project.DataAccessLayer
 
         public DataTable FetchModules(int studentNumber)
         {
-            string query = @"SELECT * FROM Module WHERE StudentNumber = @StudentNumber";
-            DataTable table = new DataTable();
+            string fetchModuleQuery = @"SELECT * FROM Module WHERE StudentNumber = @StudentNumber";
+            DataTable moduleTable = new DataTable();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection))
+                using (SqlDataAdapter dataAdapter = new SqlDataAdapter(fetchModuleQuery, connection))
                 {
                     dataAdapter.SelectCommand.Parameters.AddWithValue("@StudentNumber", studentNumber);
                     connection.Open();
-                    dataAdapter.Fill(table);
+                    dataAdapter.Fill(moduleTable);
                     connection.Close();
                 }
             }
-            return table;
+            return moduleTable;
         }
 
         public void AddModule(int studentNumber, int moduleCode)
         {
-            string query = @"INSERT INTO StudentModule VALUES (@StudentNumber,@ModuleCode);";
+            string addModuleQuery = @"INSERT INTO StudentModule VALUES (@StudentNumber,@ModuleCode);";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using(SqlCommand command = new SqlCommand(query, connection))
+                using(SqlCommand addModuleCommand = new SqlCommand(addModuleQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@StudentNumber", studentNumber);
-                    command.Parameters.AddWithValue("@ModuleCode", moduleCode);
+                    addModuleCommand.Parameters.AddWithValue("@StudentNumber", studentNumber);
+                    addModuleCommand.Parameters.AddWithValue("@ModuleCode", moduleCode);
                 }
             }
         }
 
         public void RemoveModule(int studentNumber, int moduleCode)
         {
-            string query = @"DELETE StudentModule WHERE StudentNumber = @StudentNumber AND ModuleCode = @ModuleCode;";
+            string removeModuleQuery = @"DELETE StudentModule WHERE StudentNumber = @StudentNumber AND ModuleCode = @ModuleCode;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand removeModuleCommand = new SqlCommand(removeModuleQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@StudentNumber", studentNumber);
-                    command.Parameters.AddWithValue("@ModuleCode", moduleCode);
+                    removeModuleCommand.Parameters.AddWithValue("@StudentNumber", studentNumber);
+                    removeModuleCommand.Parameters.AddWithValue("@ModuleCode", moduleCode);
                 }
             }
         }

@@ -15,24 +15,24 @@ namespace PRG282_Project.DataAccessLayer
 
         public void Create(Student student)
         {
-            string query = @"INSERT INTO Student VALUES
+            string createQuery = @"INSERT INTO Student VALUES
                             (@StudentNumber, @FirstName, @Surname, @Picture, @DateOfBirth, @Gender, @Phone, @StreetAddress);";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using(SqlCommand command = new SqlCommand(query, connection )) 
+                using(SqlCommand createCommand = new SqlCommand(createQuery, connection )) 
                 {
-                    command.Parameters.AddWithValue("@StudentNumber", student.StudentNumber);
-                    command.Parameters.AddWithValue("@FirstName", student.FirstName);
-                    command.Parameters.AddWithValue("@Surname", student.Surname);
-                    command.Parameters.AddWithValue("@Picture", student.Picture);
-                    command.Parameters.AddWithValue("@DateOfBirth", student.DateOfBirth);
-                    command.Parameters.AddWithValue("@Gender", student.Gender);
-                    command.Parameters.AddWithValue("@Phone", student.Phone);
-                    command.Parameters.AddWithValue("@StreetAddress", student.StreetAddress);
+                    createCommand.Parameters.AddWithValue("@StudentNumber", student.StudentNumber);
+                    createCommand.Parameters.AddWithValue("@FirstName", student.FirstName);
+                    createCommand.Parameters.AddWithValue("@Surname", student.Surname);
+                    createCommand.Parameters.AddWithValue("@Picture", student.Picture);
+                    createCommand.Parameters.AddWithValue("@DateOfBirth", student.DateOfBirth);
+                    createCommand.Parameters.AddWithValue("@Gender", student.Gender);
+                    createCommand.Parameters.AddWithValue("@Phone", student.Phone);
+                    createCommand.Parameters.AddWithValue("@StreetAddress", student.StreetAddress);
 
                     connection.Open();
-                    command.ExecuteNonQuery();  
+                    createCommand.ExecuteNonQuery();  
                     connection.Close();
                 }
             }
@@ -40,7 +40,7 @@ namespace PRG282_Project.DataAccessLayer
 
         public void Update(Student student)
         {
-            string query = @"UPDATE Student SET
+            string updateQuery = @"UPDATE Student SET
                             StudentNumber = @StudentNumber, 
                             FirstName = @FirstName, 
                             Surname = @Surname, 
@@ -52,19 +52,19 @@ namespace PRG282_Project.DataAccessLayer
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@StudentNumber", student.StudentNumber);
-                    command.Parameters.AddWithValue("@FirstName", student.FirstName);
-                    command.Parameters.AddWithValue("@Surname", student.Surname);
-                    command.Parameters.AddWithValue("@Picture", student.Picture);
-                    command.Parameters.AddWithValue("@DateOfBirth", student.DateOfBirth);
-                    command.Parameters.AddWithValue("@Gender", student.Gender);
-                    command.Parameters.AddWithValue("@Phone", student.Phone);
-                    command.Parameters.AddWithValue("@StreetAddress", student.StreetAddress);
+                    updateCommand.Parameters.AddWithValue("@StudentNumber", student.StudentNumber);
+                    updateCommand.Parameters.AddWithValue("@FirstName", student.FirstName);
+                    updateCommand.Parameters.AddWithValue("@Surname", student.Surname);
+                    updateCommand.Parameters.AddWithValue("@Picture", student.Picture);
+                    updateCommand.Parameters.AddWithValue("@DateOfBirth", student.DateOfBirth);
+                    updateCommand.Parameters.AddWithValue("@Gender", student.Gender);
+                    updateCommand.Parameters.AddWithValue("@Phone", student.Phone);
+                    updateCommand.Parameters.AddWithValue("@StreetAddress", student.StreetAddress);
 
                     connection.Open();
-                    command.ExecuteNonQuery();
+                    updateCommand.ExecuteNonQuery();
                     connection.Close();
                 }
             }
@@ -72,12 +72,12 @@ namespace PRG282_Project.DataAccessLayer
     
         public DataTable Read()
         {
-            string query = @"SELECT * FROM Student";
+            string readQuery = @"SELECT * FROM Student";
             DataTable table = new DataTable();
 
             using (SqlConnection connection = new SqlConnection (connectionString))
             {
-                using (SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection))
+                using (SqlDataAdapter dataAdapter = new SqlDataAdapter(readQuery, connection))
                 {
                     connection.Open();
                     dataAdapter.Fill(table);
@@ -90,12 +90,12 @@ namespace PRG282_Project.DataAccessLayer
 
         public DataTable Search(int studentNumber)
         {
-            string query = @"SELECT * FROM Student WHERE StudentNumber = @StudentNumber";
+            string searchQuery = @"SELECT * FROM Student WHERE StudentNumber = @StudentNumber";
             DataTable table = new DataTable();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection))
+                using (SqlDataAdapter dataAdapter = new SqlDataAdapter(searchQuery, connection))
                 {
                     dataAdapter.SelectCommand.Parameters.AddWithValue("@StudentNumber", studentNumber);
                     connection.Open();
@@ -109,16 +109,16 @@ namespace PRG282_Project.DataAccessLayer
    
         public void Delete(int studentNumber)
         {
-            string query = @"DELETE Student WHERE StudentNumber = @StudentNumber;";
+            string deleteQuery = @"DELETE Student WHERE StudentNumber = @StudentNumber;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using(SqlCommand command = new SqlCommand(query, connection))
+                using(SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@StudentNumber", studentNumber);
+                    deleteCommand.Parameters.AddWithValue("@StudentNumber", studentNumber);
 
                     connection.Open();
-                    command.ExecuteNonQuery();
+                    deleteCommand.ExecuteNonQuery();
                     connection.Close();
                 }
             }
