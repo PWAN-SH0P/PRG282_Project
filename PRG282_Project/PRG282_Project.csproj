@@ -12,7 +12,6 @@
     <Folder Include="DataAccessLayer\" />
     <Folder Include="LogicLayer\" />
     <Folder Include="DataLayer\" />
-    <Folder Include="PresentationLayer\" />
   </ItemGroup>
 
 </Project>
