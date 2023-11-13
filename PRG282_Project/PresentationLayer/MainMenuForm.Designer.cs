@@ -53,6 +53,7 @@
             StudentNumberBox.Name = "StudentNumberBox";
             StudentNumberBox.Size = new Size(125, 27);
             StudentNumberBox.TabIndex = 0;
+            StudentNumberBox.Leave += StudentNumberBox_Leave;
             // 
             // FirstNameBox
             // 
