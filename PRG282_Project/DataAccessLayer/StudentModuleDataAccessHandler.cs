@@ -30,13 +30,31 @@ namespace PRG282_Project.DataAccessLayer
             return table;
         }
 
-        public void Add(int studentNumber, int moduleCode)
+        public void AddModule(int studentNumber, int moduleCode)
         {
             string query = @"INSERT INTO StudentModule VALUES (@StudentNumber,@ModuleCode);";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                using(SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@StudentNumber", studentNumber);
+                    command.Parameters.AddWithValue("@ModuleCode", moduleCode);
+                }
+            }
+        }
 
+        public void RemoveModule(int studentNumber, int moduleCode)
+        {
+            string query = @"DELETE StudentModule WHERE StudentNumber = @StudentNumber AND ModuleCode = @ModuleCode;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@StudentNumber", studentNumber);
+                    command.Parameters.AddWithValue("@ModuleCode", moduleCode);
+                }
             }
         }
     }
