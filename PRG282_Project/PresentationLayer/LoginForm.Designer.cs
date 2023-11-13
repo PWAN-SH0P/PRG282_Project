@@ -28,12 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "LoginForm";
+            UserNameBox = new TextBox();
+            PassWordBox = new TextBox();
+            LoginButton = new Button();
+            RegisterButton = new Button();
+            SuspendLayout();
+            // 
+            // UserNameBox
+            // 
+            UserNameBox.Location = new Point(79, 77);
+            UserNameBox.Name = "UserNameBox";
+            UserNameBox.Size = new Size(125, 27);
+            UserNameBox.TabIndex = 0;
+            // 
+            // PassWordBox
+            // 
+            PassWordBox.Location = new Point(241, 77);
+            PassWordBox.Name = "PassWordBox";
+            PassWordBox.PasswordChar = '*';
+            PassWordBox.Size = new Size(125, 27);
+            PassWordBox.TabIndex = 1;
+            // 
+            // LoginButton
+            // 
+            LoginButton.Location = new Point(110, 122);
+            LoginButton.Name = "LoginButton";
+            LoginButton.Size = new Size(94, 29);
+            LoginButton.TabIndex = 2;
+            LoginButton.Text = "Login";
+            LoginButton.UseVisualStyleBackColor = true;
+            LoginButton.Click += LoginButton_Click;
+            // 
+            // RegisterButton
+            // 
+            RegisterButton.Location = new Point(241, 122);
+            RegisterButton.Name = "RegisterButton";
+            RegisterButton.Size = new Size(94, 29);
+            RegisterButton.TabIndex = 3;
+            RegisterButton.Text = "Register";
+            RegisterButton.UseVisualStyleBackColor = true;
+            RegisterButton.Click += RegisterButton_Click;
+            // 
+            // LoginForm
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(441, 203);
+            Controls.Add(RegisterButton);
+            Controls.Add(LoginButton);
+            Controls.Add(PassWordBox);
+            Controls.Add(UserNameBox);
+            Name = "LoginForm";
+            Text = "LoginForm";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox UserNameBox;
+        private TextBox PassWordBox;
+        private Button LoginButton;
+        private Button RegisterButton;
     }
 }
