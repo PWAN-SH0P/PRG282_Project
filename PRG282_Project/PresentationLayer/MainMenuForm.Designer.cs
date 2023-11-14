@@ -39,9 +39,6 @@
             AddButton = new Button();
             DisplayButton = new Button();
             UpdateButton = new Button();
-            RegisterButton = new Button();
-            DeregisterButton = new Button();
-            ModuleView = new DataGridView();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -50,9 +47,11 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            label9 = new Label();
+            AttachButton = new Button();
+            UpdateModulesButton = new Button();
+            groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)PictureBox).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)ModuleView).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // StudentNumberBox
@@ -121,9 +120,9 @@
             // 
             // AddButton
             // 
-            AddButton.Location = new Point(23, 377);
+            AddButton.Location = new Point(19, 375);
             AddButton.Name = "AddButton";
-            AddButton.Size = new Size(94, 29);
+            AddButton.Size = new Size(122, 29);
             AddButton.TabIndex = 8;
             AddButton.Text = "Add Student";
             AddButton.UseVisualStyleBackColor = true;
@@ -131,9 +130,9 @@
             // 
             // DisplayButton
             // 
-            DisplayButton.Location = new Point(141, 377);
+            DisplayButton.Location = new Point(549, 357);
             DisplayButton.Name = "DisplayButton";
-            DisplayButton.Size = new Size(94, 29);
+            DisplayButton.Size = new Size(125, 49);
             DisplayButton.TabIndex = 9;
             DisplayButton.Text = "View Students";
             DisplayButton.UseVisualStyleBackColor = true;
@@ -141,43 +140,13 @@
             // 
             // UpdateButton
             // 
-            UpdateButton.Location = new Point(258, 377);
+            UpdateButton.Location = new Point(156, 375);
             UpdateButton.Name = "UpdateButton";
-            UpdateButton.Size = new Size(94, 29);
+            UpdateButton.Size = new Size(148, 29);
             UpdateButton.TabIndex = 10;
             UpdateButton.Text = "Update Student";
             UpdateButton.UseVisualStyleBackColor = true;
             UpdateButton.Click += UpdateButton_Click;
-            // 
-            // RegisterButton
-            // 
-            RegisterButton.Location = new Point(539, 172);
-            RegisterButton.Name = "RegisterButton";
-            RegisterButton.Size = new Size(94, 29);
-            RegisterButton.TabIndex = 12;
-            RegisterButton.Text = "Register";
-            RegisterButton.UseVisualStyleBackColor = true;
-            RegisterButton.Click += RegisterButton_Click;
-            // 
-            // DeregisterButton
-            // 
-            DeregisterButton.Location = new Point(665, 172);
-            DeregisterButton.Name = "DeregisterButton";
-            DeregisterButton.Size = new Size(94, 29);
-            DeregisterButton.TabIndex = 13;
-            DeregisterButton.Text = "Deregister";
-            DeregisterButton.UseVisualStyleBackColor = true;
-            DeregisterButton.Click += DeregisterButton_Click;
-            // 
-            // ModuleView
-            // 
-            ModuleView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ModuleView.Location = new Point(502, 50);
-            ModuleView.Name = "ModuleView";
-            ModuleView.RowHeadersWidth = 51;
-            ModuleView.RowTemplate.Height = 29;
-            ModuleView.Size = new Size(300, 104);
-            ModuleView.TabIndex = 15;
             // 
             // label1
             // 
@@ -209,7 +178,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(209, 169);
+            label4.Location = new Point(209, 146);
             label4.Name = "label4";
             label4.Size = new Size(127, 20);
             label4.TabIndex = 19;
@@ -251,21 +220,43 @@
             label8.TabIndex = 23;
             label8.Text = "Street Address";
             // 
-            // label9
+            // AttachButton
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(623, 27);
-            label9.Name = "label9";
-            label9.Size = new Size(66, 20);
-            label9.TabIndex = 24;
-            label9.Text = "Modules";
+            AttachButton.Location = new Point(209, 172);
+            AttachButton.Name = "AttachButton";
+            AttachButton.Size = new Size(80, 29);
+            AttachButton.TabIndex = 25;
+            AttachButton.Text = "Attach";
+            AttachButton.UseVisualStyleBackColor = true;
+            AttachButton.Click += AttachButton_Click;
+            // 
+            // UpdateModulesButton
+            // 
+            UpdateModulesButton.Location = new Point(706, 357);
+            UpdateModulesButton.Name = "UpdateModulesButton";
+            UpdateModulesButton.Size = new Size(125, 49);
+            UpdateModulesButton.TabIndex = 26;
+            UpdateModulesButton.Text = "Update Modules";
+            UpdateModulesButton.UseVisualStyleBackColor = true;
+            UpdateModulesButton.Click += UpdateModulesButton_Click;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(UpdateButton);
+            groupBox1.Controls.Add(AddButton);
+            groupBox1.Location = new Point(23, 2);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(325, 429);
+            groupBox1.TabIndex = 27;
+            groupBox1.TabStop = false;
             // 
             // MainMenuForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(897, 534);
-            Controls.Add(label9);
+            ClientSize = new Size(883, 469);
+            Controls.Add(UpdateModulesButton);
+            Controls.Add(AttachButton);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -274,12 +265,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(ModuleView);
-            Controls.Add(DeregisterButton);
-            Controls.Add(RegisterButton);
-            Controls.Add(UpdateButton);
             Controls.Add(DisplayButton);
-            Controls.Add(AddButton);
             Controls.Add(StreetAddressBox);
             Controls.Add(PhoneBox);
             Controls.Add(GenderListBox);
@@ -288,10 +274,11 @@
             Controls.Add(SurnameBox);
             Controls.Add(FirstNameBox);
             Controls.Add(StudentNumberBox);
+            Controls.Add(groupBox1);
             Name = "MainMenuForm";
             Text = "MainMenuForm";
             ((System.ComponentModel.ISupportInitialize)PictureBox).EndInit();
-            ((System.ComponentModel.ISupportInitialize)ModuleView).EndInit();
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -309,9 +296,6 @@
         private Button AddButton;
         private Button DisplayButton;
         private Button UpdateButton;
-        private Button RegisterButton;
-        private Button DeregisterButton;
-        private DataGridView ModuleView;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -320,6 +304,8 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private Label label9;
+        private Button AttachButton;
+        private Button UpdateModulesButton;
+        private GroupBox groupBox1;
     }
 }

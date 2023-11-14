@@ -29,7 +29,7 @@ namespace PRG282_Project.DataLayer
         public bool IsValidCredentials(string username, string password)
         {
             LoginFileHandler handler = new LoginFileHandler();
-            List<string> credentialList = new List<string>();
+            List<string> credentialList = handler.GetAllLines();
 
             bool credentialsValid;
             string searchTerm = $"{username},{password}";

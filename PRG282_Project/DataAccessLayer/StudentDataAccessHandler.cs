@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PRG282_Project.LogicLayer;
 using System.Data;
 using System.Data.SqlClient;
+using PRG282_Project.BusinessLayer;
 
 namespace PRG282_Project.DataAccessLayer
 {
@@ -49,6 +50,8 @@ namespace PRG282_Project.DataAccessLayer
                             Gender = @Gender, 
                             Phone  = @Phone, 
                             StreetAddress = @StreetAddress;";
+
+      
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -123,9 +126,5 @@ namespace PRG282_Project.DataAccessLayer
                 }
             }
         }
-
-        
-
-        
     }
 }

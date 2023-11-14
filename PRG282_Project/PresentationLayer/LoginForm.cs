@@ -16,6 +16,7 @@ namespace PRG282_Project.PresentationLayer
         public LoginForm()
         {
             InitializeComponent();
+            this.ControlBox = false;
         }
 
         

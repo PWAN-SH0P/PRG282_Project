@@ -30,7 +30,7 @@ namespace PRG282_Project.DataAccessLayer
             return moduleTable;
         }
 
-        public void AddModule(int studentNumber, int moduleCode)
+        public void AddModule(int studentNumber, string moduleCode)
         {
             string addModuleQuery = @"INSERT INTO StudentModule VALUES (@StudentNumber,@ModuleCode);";
 
@@ -44,7 +44,7 @@ namespace PRG282_Project.DataAccessLayer
             }
         }
 
-        public void RemoveModule(int studentNumber, int moduleCode)
+        public void RemoveModule(int studentNumber, string moduleCode)
         {
             string removeModuleQuery = @"DELETE StudentModule WHERE StudentNumber = @StudentNumber AND ModuleCode = @ModuleCode;";
 
@@ -56,6 +56,28 @@ namespace PRG282_Project.DataAccessLayer
                     removeModuleCommand.Parameters.AddWithValue("@ModuleCode", moduleCode);
                 }
             }
+        }
+        
+        public List<string> ModuleList()
+        {
+            string fetchCodesQuery = @"SELECT Code FROM Module;";
+            List<string> listOfCodes = new List<string>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using(SqlCommand fetchCodesCommand = new SqlCommand(fetchCodesQuery, connection))
+                {
+                    using(SqlDataReader reader = fetchCodesCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string code = reader.GetString(0);
+                            listOfCodes.Add(code);
+                        }
+                    }
+                }
+            }
+            return listOfCodes;
         }
     }
 }

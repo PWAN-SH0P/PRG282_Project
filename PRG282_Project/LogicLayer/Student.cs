@@ -11,7 +11,7 @@ namespace PRG282_Project.LogicLayer
         public int StudentNumber { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
-        public Image Picture { get; set; }
+        public string Picture { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int Gender { get; set; }
         public string Phone { get; set; }
@@ -19,7 +19,7 @@ namespace PRG282_Project.LogicLayer
 
         public Student () { }
 
-        public Student (int studentNumber, string firstName, string surname, Image picture, DateTime dateOfBirth, int gender, string phone, string streetAddress)
+        public Student (int studentNumber, string firstName, string surname, string picture, DateTime dateOfBirth, int gender, string phone, string streetAddress)
         {
             StudentNumber = studentNumber;
             FirstName = firstName;

@@ -28,58 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            button1 = new Button();
-            button2 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            StudentView = new DataGridView();
+            SearchButton = new Button();
+            ViewAllButton = new Button();
+            StudentNumberBox = new MaskedTextBox();
+            ((System.ComponentModel.ISupportInitialize)StudentView).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // StudentView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(25, 29);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(785, 289);
-            dataGridView1.TabIndex = 0;
+            StudentView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            StudentView.Location = new Point(25, 29);
+            StudentView.Name = "StudentView";
+            StudentView.RowHeadersWidth = 51;
+            StudentView.RowTemplate.Height = 29;
+            StudentView.Size = new Size(785, 289);
+            StudentView.TabIndex = 0;
             // 
-            // button1
+            // SearchButton
             // 
-            button1.Location = new Point(274, 381);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            SearchButton.Location = new Point(217, 371);
+            SearchButton.Name = "SearchButton";
+            SearchButton.Size = new Size(94, 29);
+            SearchButton.TabIndex = 1;
+            SearchButton.Text = "Search";
+            SearchButton.UseVisualStyleBackColor = true;
+            SearchButton.Click += SearchButton_Click;
             // 
-            // button2
+            // ViewAllButton
             // 
-            button2.Location = new Point(448, 381);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 2;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            ViewAllButton.Location = new Point(498, 371);
+            ViewAllButton.Name = "ViewAllButton";
+            ViewAllButton.Size = new Size(94, 29);
+            ViewAllButton.TabIndex = 2;
+            ViewAllButton.Text = "View All";
+            ViewAllButton.UseVisualStyleBackColor = true;
+            ViewAllButton.Click += ViewAllButton_Click;
+            // 
+            // StudentNumberBox
+            // 
+            StudentNumberBox.Location = new Point(327, 372);
+            StudentNumberBox.Mask = "00000000";
+            StudentNumberBox.Name = "StudentNumberBox";
+            StudentNumberBox.Size = new Size(133, 27);
+            StudentNumberBox.TabIndex = 3;
             // 
             // DisplayForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(841, 484);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(dataGridView1);
+            Controls.Add(StudentNumberBox);
+            Controls.Add(ViewAllButton);
+            Controls.Add(SearchButton);
+            Controls.Add(StudentView);
             Name = "DisplayForm";
             Text = "DisplayForm";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)StudentView).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
-        private Button button1;
-        private Button button2;
+        private DataGridView StudentView;
+        private Button SearchButton;
+        private Button ViewAllButton;
+        private MaskedTextBox StudentNumberBox;
     }
 }
